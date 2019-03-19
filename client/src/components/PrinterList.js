@@ -1,55 +1,37 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Table } from 'reactstrap';
+import { getItems } from '../actions/itemActions';
 class PrinterList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentWillMount() {}
-
-  componentDidMount() {}
-
-  componentWillReceiveProps(nextProps) {}
-
-  shouldComponentUpdate(nextProps, nextState) {}
-
-  componentWillUpdate(nextProps, nextState) {}
-
-  componentDidUpdate(prevProps, prevState) {}
-
-  componentWillUnmount() {}
+  componentDidMount = () => {
+    this.props.getItems();
+  };
 
   render() {
+    const { items } = this.props.item;
     return (
       <div>
         <Table>
           <thead>
             <tr>
-              <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
+              <th>Модель</th>
+              <th>Страницы</th>
+              <th>IP</th>
+              <th>Локация</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
+            {items.map(({ _id, model, ip, location, pages }) => (
+              <tr key={_id}>
+                <td>{model}</td>
+                <td>{pages}</td>
+                <td>
+                  <a href={'http://' + ip}>{ip}</a>
+                </td>
+                <td>{location}</td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </div>
@@ -57,6 +39,14 @@ class PrinterList extends Component {
   }
 }
 
-PrinterList.propTypes = {};
-
-export default PrinterList;
+PrinterList.propTypes = {
+  getItems: PropTypes.func.isRequired,
+  item: PropTypes.object.isRequired
+};
+const mapStateToProps = state => ({
+  item: state.item
+});
+export default connect(
+  mapStateToProps,
+  { getItems }
+)(PrinterList);

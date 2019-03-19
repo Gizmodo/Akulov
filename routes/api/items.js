@@ -9,7 +9,7 @@ const Item = require('../../models/Item');
 // @access Public
 router.get('/', (req, res) => {
   Item.find()
-    //.sort({ date: -1 })
+    .sort({ ip: 1 })
     .then(items => {
       res.json(items);
     });

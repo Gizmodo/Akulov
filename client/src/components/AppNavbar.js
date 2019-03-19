@@ -1,3 +1,4 @@
+import Button from '@material-ui/core/Button';
 import React, { Component } from 'react';
 import {
   Collapse,
@@ -9,7 +10,6 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap';
-
 class AppNavber extends Component {
   state = {
     isOpen: false
@@ -23,6 +23,9 @@ class AppNavber extends Component {
   render() {
     return (
       <div>
+        <Button variant="contained" color="primary">
+          Hello World
+        </Button>
         <Navbar color="dark" dark expand="sm" className="mb-5">
           <Container>
             <NavbarBrand href="/">ShoppingList</NavbarBrand>
