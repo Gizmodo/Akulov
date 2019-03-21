@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { Table } from 'reactstrap';
 import { getItems } from '../actions/itemActions';
@@ -20,10 +21,11 @@ class PrinterList extends Component {
               <th>IP</th>
               <th>Локация</th>
               <th>Серийный номер</th>
+              <th>Дата</th>
             </tr>
           </thead>
           <tbody>
-            {items.map(({ _id, model, ip, location, pages, serial }) => (
+            {items.map(({ _id, model, ip, location, pages, serial, date }) => (
               <tr key={_id}>
                 <td>{model}</td>
                 <td>{pages}</td>
@@ -32,6 +34,9 @@ class PrinterList extends Component {
                 </td>
                 <td>{location}</td>
                 <td>{serial}</td>
+                <td>
+                  <Moment format="DD.MM.YYYY">{date}</Moment>
+                </td>
               </tr>
             ))}
           </tbody>
