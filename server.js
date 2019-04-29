@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const items = require('./routes/api/items');
+const printers = require('./routes/api/printers');
+const branches = require('./routes/api/branches');
 
 const app = express();
 app.use(bodyParser.json());
@@ -17,6 +19,9 @@ mongoose
   .catch(err => console.log(err));
 // User Routes
 app.use('/api/items', items);
+app.use('/api/printers', printers);
+app.use('/api/branches', branches);
+
 
 const port = process.env.PORT || 5000;
 
