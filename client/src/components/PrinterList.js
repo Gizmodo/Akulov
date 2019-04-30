@@ -21,11 +21,12 @@ class PrinterList extends Component {
               <th>IP</th>
               <th>Локация</th>
               <th>Серийный номер</th>
+              <th>Филиал</th>
               <th>Дата</th>
             </tr>
           </thead>
           <tbody>
-            {items.map(({ _id, model, ip, location, pages, serial, date }) => (
+            {items.map(({ _id, model, ip, location, pages, serial, date, filial }) => (
               <tr key={_id}>
                 <td>{model}</td>
                 <td>{pages}</td>
@@ -34,6 +35,7 @@ class PrinterList extends Component {
                 </td>
                 <td>{location}</td>
                 <td>{serial}</td>
+                <td>{filial}</td>
                 <td>
                   <Moment format="DD.MM.YYYY">{date}</Moment>
                 </td>
