@@ -3,15 +3,15 @@ const Schema = mongoose.Schema;
 
 //Create Schema
 const ItemSchema = new Schema({
-    name: {
+    site_code: {
         type: String,
         required: true
     },
-    ip_start: {
+    first_address_int: {
         type: Number,
         required: true
     },
-    ip_end: {
+    last_address_int: {
         type: Number,
         required: true
     }

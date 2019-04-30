@@ -23,13 +23,13 @@ router.get('/', (req, res) => {
                   {
                     "$gte": [
                       "$$ip_int",
-                      "$ip_start"
+                      "$first_address_int"
                     ]
                   },
                   {
                     "$lte": [
                       "$$ip_int",
-                      "$ip_end"
+                      "$last_address_int"
                     ]
                   }
                 ]
@@ -52,7 +52,7 @@ router.get('/', (req, res) => {
     },
     {
       "$addFields": {
-        "filial": "$Printers.name"
+        "filial": "$Printers.site_code"
       }
     },
     {

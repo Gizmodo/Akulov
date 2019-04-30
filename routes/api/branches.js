@@ -10,7 +10,7 @@ const branch_item = require('../../models/branch_item');
 router.get('/', (req, res) => {
     branch_item
         .find()
-        .sort({ name: 1 })
+        .sort({ site_code: 1 })
         .then(items => {
             res.json(items);
         });
