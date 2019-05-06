@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 //Item Nodel
-const Item = require('../../models/Item');
+const Item = require('../../models/item');
 
 // @route  GET api/items
 // @desc   Get All Items
