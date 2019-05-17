@@ -143,8 +143,8 @@ router.get('/', (req, res) => {
     {
       "$match": {
         "pg.date": {
-          "$gte": moment("2019-05-01 03:00:00.000+03:00").toDate(),
-          "$lte": moment("2019-05-30 03:00:00.000+03:00").toDate()
+          "$gte": moment().startOf('month').toDate(),
+          "$lte": moment().endOf('month').toDate()
         }
       }
     },
